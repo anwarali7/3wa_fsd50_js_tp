@@ -11,6 +11,7 @@ const sumTTC = {
   },
 
   setPrecision: (precision) => {
+    // todo: vérifier type
     sumTTC.precision = precision;
   }
 }
