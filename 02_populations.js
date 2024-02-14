@@ -61,8 +61,6 @@ const relations = [
 populations.forEach((person) => {
   person.relations = [];
 
-  // person.relation = relations.relation;
-
   // Trouver les relations de la personne (find)
   const found = relations.find((relation) => {
     return relation.id === person.id
@@ -72,17 +70,12 @@ populations.forEach((person) => {
     return;
   }
 
-  // console.log(found)
   const relationIds = found.relation;
-  // console.log(relationIds);
 
   relationIds.forEach((relationId) => {
     const relationName = (populations.find((p) => p.id === relationId)).name;
     person.relations.push(relationName);
   })
-
-  // console.log(person);
-
 })
 console.log("\n\n4.\nTableau populations avec relations");
 console.table(populations);
