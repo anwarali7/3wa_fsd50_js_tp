@@ -17,25 +17,20 @@ const populations = [
 ];
 
 // 1.
-// console.log('1.');
-
 populations.sort((a, b) => a.name.length - b.name.length);
-// console.log(populations);
+console.log("\n\n1.\nTableau populations trié par ordre croissant de longueur de nom");
+console.table(populations);
 
 // 2.
-// console.log('2.');
-
 populations.forEach((person) => {
   person.lenName = person.name.length;
 })
-
-// console.log(populations);
+console.log("\n\n2.\nTableau populations avec longueur de nom");
+console.table(populations);
 
 // 3.
-// console.log('3.');
-
 const groupNames = populations.reduce((acc, person) => {
-  if(acc.length === 0) {
+  if (acc.length === 0) {
     acc.push([person]);
     return acc;
   }
@@ -49,24 +44,23 @@ const groupNames = populations.reduce((acc, person) => {
   return acc;
 }, []);
 
-// console.log(groupNames);
+console.log("\n\n3.\nPersonnes regroupées par longueur de nom");
+console.log(groupNames);
 
 // 4.
-console.log('4.');
-
 const relations = [
-  { id : 0 , relation : [1, 2, 4]},
-  { id : 3 , relation : [7, 8]},
-  { id : 4 , relation : [2, 7, 8, 11]},
-  { id : 5 , relation : [1, 2, 4]},
-  { id : 7 , relation : [2, 3, 5, 9]},
-  { id : 9 , relation : [1, 2, 4, 8, 11]},
-  { id : 11 , relation : [1, 2, 9, 10,]},
+  { id: 0, relation: [1, 2, 4] },
+  { id: 3, relation: [7, 8] },
+  { id: 4, relation: [2, 7, 8, 11] },
+  { id: 5, relation: [1, 2, 4] },
+  { id: 7, relation: [2, 3, 5, 9] },
+  { id: 9, relation: [1, 2, 4, 8, 11] },
+  { id: 11, relation: [1, 2, 9, 10,] },
 ]
 
 populations.forEach((person) => {
   person.relations = [];
-  
+
   // person.relation = relations.relation;
 
   // Trouver les relations de la personne (find)
@@ -74,7 +68,7 @@ populations.forEach((person) => {
     return relation.id === person.id
   })
 
-  if(found === undefined) {
+  if (found === undefined) {
     return;
   }
 
@@ -86,13 +80,17 @@ populations.forEach((person) => {
     const relationName = (populations.find((p) => p.id === relationId)).name;
     person.relations.push(relationName);
   })
-  
+
   // console.log(person);
 
 })
+console.log("\n\n4.\nTableau populations avec relations");
+console.table(populations);
 
 
-// populations.sort(() => );
+populations.sort((a, b) => a.relations.length - b.relations.length);
+console.log("\n\n4.\nTableau populations trié par ordre croissant de nombre de relations");
+console.table(populations);
 
-
-console.log(populations);
+const maxRelations = populations.at(-1);
+console.log("\n\n4.\nLa personne qui a le plus de relations: ", maxRelations);
